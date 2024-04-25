@@ -26,10 +26,10 @@ class TextBoxPage(BasePage):
         return name, email, current_address, permanent_address
 
     def check_filled_form(self):
-        name = self.element_is_present(self.locators.CREATED_FULL_NAME).text
-        email = self.element_is_present(self.locators.CREATED_EMAIL).text
-        current_address = self.element_is_present(self.locators.CREATED_CURRENT_ADDRESS).text
-        permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS).text
+        name = self.element_is_present(self.locators.CREATED_FULL_NAME).text.split(':')[1]
+        email = self.element_is_present(self.locators.CREATED_EMAIL).text.split(':')[1]
+        current_address = self.element_is_present(self.locators.CREATED_CURRENT_ADDRESS).text.split(':')[1]
+        permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS).text.split(':')[1]
         return name, email, current_address, permanent_address
 
 
