@@ -9,8 +9,9 @@ import time
 
 
 class TextBoxPage(BasePage):
-    locators = TextBoxLocators()
+    locators = TextBoxLocators()  #Создаю экземпляр класса и он будет включать в себя все атрибуты классы (FULL_NAME, EMAIL и т.п)
 
+    # SELF это ссылка на сам объект (Еще раз глянуть)
     def fill_all_fields(self):
         person_info = next(generated_person())
         name = person_info.full_name
@@ -34,5 +35,13 @@ class TextBoxPage(BasePage):
 
 
 class CheckBoxPage(BasePage):
-
     locators = CheckBoxPageLocators()
+
+    def open_full_list(self):
+        self.element_is_visible(self.locators.EXPAND_ALL_BUTTON).click()
+
+    def click_random_checkbox(self):
+        item_list = self.elements_are_visible(self.locators.ITEM_LIST)
+        for item in item_list:
+            self.go_to_element(item)
+            item.click()
