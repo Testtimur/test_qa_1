@@ -1,3 +1,5 @@
+import random
+
 from generator.generator import generated_person
 from locatars.elements_page_locators import TextBoxLocators, CheckBoxPageLocators
 from pages.base_page import BasePage
@@ -42,6 +44,13 @@ class CheckBoxPage(BasePage):
 
     def click_random_checkbox(self):
         item_list = self.elements_are_visible(self.locators.ITEM_LIST)
-        for item in item_list:
-            self.go_to_element(item)
-            item.click()
+        count = 21
+        while count != 0:
+            item = item_list[random.randint(1,15)] # Это метод случайно кликает от 1 до 15
+            if count > 0:
+                self.go_to_element(item)
+                item.click()
+                print(item)
+                count -= 1
+            else:
+                break
