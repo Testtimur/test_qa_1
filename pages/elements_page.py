@@ -113,4 +113,11 @@ class WebTablePage(BasePage):
         self.element_is_visible(self.locators.SALARY_INPUT).send_keys(salary)
         self.element_is_visible(self.locators.DEPARTMENT_INPUT).send_keys(department)
         self.element_is_visible(self.locators.SUBMIT).click()
-        return person_info, first_name, last_name, email, age, salary, department
+        return [first_name, last_name, str(age), email, str(salary), department]
+
+    def check_add_person(self):
+        person_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
+        data = []
+        for person in person_list:
+            data.append(person.text.splitlines())
+        return data
