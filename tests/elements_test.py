@@ -54,3 +54,14 @@ class TestElements:
             new_person = web_table_page.add_new_person()
             check_person_table = web_table_page.check_add_person()
             assert new_person in check_person_table
+
+        def test_web_table_search_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            key_word = web_table_page.add_new_person()[0]
+            web_table_page.search_person(key_word)
+            table_result = web_table_page.check_search_person()
+            assert key_word in table_result
+
+
+
