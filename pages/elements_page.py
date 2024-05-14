@@ -130,5 +130,26 @@ class WebTablePage(BasePage):
         row = delete_button.find_element("xpath", "//div[@class='rt-tr-group']")
         return row.text.splitlines()
 
+    def edit_person(self):
+        person_info = next(generated_person())
+        age = person_info.age
+        self.element_is_visible(self.locators.EDIT_PERSON).click()
+        age_input = self.element_is_visible(self.locators.AGE_INPUT)
+        age_input.clear()
+        age_input.send_keys(age)
+        self.element_is_visible(self.locators.SUBMIT).click()
+        return str(age)
+
+    def delete_person(self):
+        delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
+        delete_button.click()
+
+    def check_delete_person(self):
+        delete_person = self.element_is_present(self.locators.DELETE_PERSON)
+        return delete_person.text
+
+
+
+
 
 

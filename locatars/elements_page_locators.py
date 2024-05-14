@@ -48,3 +48,8 @@ class WebTablePageLocators:
     WORD_INPUT = (By.CSS_SELECTOR, 'input[id="searchBox"]')
     DELETE_BUTTON = (By.CSS_SELECTOR, 'span[title="Delete"]')
 
+    #Edit person
+    EDIT_PERSON = (By.CSS_SELECTOR, 'span[title="Edit"]')
+
+    #Delete_person
+    DELETE_PERSON = (By.CSS_SELECTOR, 'div[class="rt-noData"]')

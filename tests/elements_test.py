@@ -63,5 +63,25 @@ class TestElements:
             table_result = web_table_page.check_search_person()
             assert key_word in table_result
 
+        def test_web_table_edit_person(self, driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            lastname = web_table_page.add_new_person()[1]
+            web_table_page.search_person(lastname)
+            age = web_table_page.edit_person()
+            check_person_table = web_table_page.check_search_person()
+            assert age in check_person_table
+
+        def test_web_table_delete_person(self,driver):
+            web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
+            web_table_page.open()
+            lastname = web_table_page.add_new_person()[1]
+            web_table_page.search_person(lastname)
+            web_table_page.delete_person()
+            check_delete_person = web_table_page.check_delete_person()
+            assert check_delete_person == 'No rows found'
+
+
+
 
 
