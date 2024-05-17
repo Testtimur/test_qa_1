@@ -1,7 +1,7 @@
 import time
 
 from pages.base_page import BasePage
-from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage
+from pages.elements_page import TextBoxPage, CheckBoxPage, RadioButtonPage, WebTablePage, ButtonsPage
 
 
 class TestElements:
@@ -72,7 +72,7 @@ class TestElements:
             check_person_table = web_table_page.check_search_person()
             assert age in check_person_table
 
-        def test_web_table_delete_person(self,driver):
+        def test_web_table_delete_person(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
             web_table_page.open()
             lastname = web_table_page.add_new_person()[1]
@@ -81,7 +81,15 @@ class TestElements:
             check_delete_person = web_table_page.check_delete_person()
             assert check_delete_person == 'No rows found'
 
+class TestButtonPage:
 
+     def test_different_click_on_the_buttons(self, driver):
+        button_page = ButtonsPage(driver, 'https://demoqa.com/buttons')
+        button_page.open()
+        double = button_page.click_on_different_button('double')
+        click = button_page.click_on_different_button('click')
+        assert double == "You have done a double click"
+        assert click == "You have done a dynamic click"
 
 
 

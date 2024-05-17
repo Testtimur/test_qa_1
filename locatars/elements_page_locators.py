@@ -53,3 +53,16 @@ class WebTablePageLocators:
 
     #Delete_person
     DELETE_PERSON = (By.CSS_SELECTOR, 'div[class="rt-noData"]')
+
+    #Edit_string
+    EDIT_STRING = (By.CSS_SELECTOR, 'select[aria-label="rows per page"]')
+
+
+class ButtonsPageLocators:
+    #Click
+    DOUBLE_BUTTON = (By.CSS_SELECTOR, "button[id='doubleClickBtn']")
+    CLICK_ME_BUTTON = (By.XPATH, '//button[text()="Click Me"]')
+
+    #Result
+    SUCCESS_DOUBLE = (By.XPATH, '//p[@id="doubleClickMessage"]')
+    SUCCESS_CLICK_ME = (By.XPATH, '//p[@id="dynamicClickMessage"]')

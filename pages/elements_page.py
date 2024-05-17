@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 from generator.generator import generated_person
 from locatars.elements_page_locators import TextBoxLocators, CheckBoxPageLocators, RadioButtonPageLocators, \
-    WebTablePageLocators
+    WebTablePageLocators, ButtonsPageLocators
 from pages.base_page import BasePage
 import time
 
@@ -72,7 +72,7 @@ class CheckBoxPage(BasePage):
         data = []
         for item in result_list:
             data.append(item.text)
-        return str(data).replace(' ', '').lower()
+        return str(data).replace(' ', '').lower().replace('doc', '').strip()
 
 
 class RadioButtonPage(BasePage):
@@ -147,6 +147,25 @@ class WebTablePage(BasePage):
     def check_delete_person(self):
         delete_person = self.element_is_present(self.locators.DELETE_PERSON)
         return delete_person.text
+
+class ButtonsPage(BasePage):
+
+    locators = ButtonsPageLocators()
+
+    def click_on_different_button(self, type_click):
+        if type_click == "double":
+            self.action_double_click(self.element_is_visible(self.locators.DOUBLE_BUTTON))
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_DOUBLE)
+        if type_click == "click":
+            click_button = self.element_is_visible(self.locators.CLICK_ME_BUTTON)
+            click_button.click()
+            return self.check_clicked_on_the_button(self.locators.SUCCESS_CLICK_ME)
+
+    def check_clicked_on_the_button(self, element):
+        return self.element_is_present(element).text
+
+
+
 
 
 
