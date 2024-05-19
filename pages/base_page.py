@@ -42,4 +42,3 @@ class BasePage:
         actions.context_click(element)
         actions.perform()
 
-
