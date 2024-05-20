@@ -104,4 +104,13 @@ class TestLinkPage:
         links_page = LinksPage(driver, 'https://demoqa.com/links')
         links_page.open()
         response_code = links_page.check_broken_link('https://demoqa.com/bad-request')
+        created_response_code = links_page.check_created_list('https://demoqa.com/created')
+        check_no_content_link = links_page.check_no_content_list('https://demoqa.com/no-content')
+        check_unauthorized_link = links_page.check_unauthorized_list('https://demoqa.com/unauthorized')
+        check_forbidden_link = links_page.check_forbidden_list('https://demoqa.com/forbidden')
+
+        assert created_response_code == 201
         assert response_code == 400
+        assert check_no_content_link == 204
+        assert check_unauthorized_link == 401
+        assert check_forbidden_link == 403

@@ -71,3 +71,7 @@ class ButtonsPageLocators:
 class LinksPageLocators:
     SIMPLE_LINK = (By.XPATH, '//a[@id="simpleLink"]')
     BAD_REQUEST = (By.XPATH, '//a[@id="bad-request"]')
+    CREATED_REQUEST = (By.XPATH, '//a[@id="created"]')
+    NO_CONTENT = (By.XPATH, '//a[@id="no-content"]')
+    UNAUTHORIZED = (By.XPATH, '//a[@id="unauthorized"]')
+    FORBIDDEN = (By.XPATH, '//a[@id="forbidden"]')

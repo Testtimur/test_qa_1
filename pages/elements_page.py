@@ -185,6 +185,34 @@ class LinksPage(BasePage):
         else:
             return request.status_code
 
+    def check_created_list(self,url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locatars.CREATED_REQUEST).click()
+        else:
+            return request.status_code
+
+    def check_no_content_list(self,url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locatars.NO_CONTENT).click()
+        else:
+            return request.status_code
+
+    def check_unauthorized_list(self,url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locatars.UNAUTHORIZED).click()
+        else:
+            return request.status_code
+
+    def check_forbidden_list(self,url):
+        request = requests.get(url)
+        if request.status_code == 200:
+            self.element_is_present(self.locatars.FORBIDDEN).click()
+        else:
+            return request.status_code
+
 
 
 
